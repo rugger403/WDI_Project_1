@@ -1,0 +1,53 @@
+<!-- <div class="topic_feed">
+  <li><a href="/reply1">Aaron Rodgers hurt his calf</a></li>
+  <li><a href="/reply2">Aaron Rodgers isn't anything special</a></li>
+  <li><a href="/reply3">The Packers will beat Seattle!</a></li>
+</div>
+
+
+ -->
+
+<div class="ncaab">
+<h1>NCAAB</h1>
+
+<ul>
+<li><% @ncaab.each do |post|%>
+  <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
+  <%end%></li>
+</ul>
+</div>
+
+
+
+<div class="nfl">
+<h1>NFL</h1>
+
+<ul>
+  <li><% @nfl.each do |post|%>
+    <p><%= post["post"]%> <%= post["tags"]%>
+      <%= post["time"]%>
+    </p>
+    <%end%></li>
+</ul>
+</div>
+
+
+
+<div class="nhl">
+<h1>NHL</h1>
+<ul>
+<li><% @nhl.each do |post|%>
+  <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
+  <%end%></li>
+</ul>
+</div>
+
+
+<div class="mma">
+<h1>MMA</h1>
+<ul>
+<li><% @mma.each do |post|%>
+  <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
+  <%end%></li>
+</ul>
+</div>

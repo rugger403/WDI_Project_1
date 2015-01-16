@@ -5,6 +5,7 @@ require_relative 'server'
 require 'uri'
 require 'httparty'
 require 'pry'
+require_relative 'database_helper.rb'
 
 
-run FacebookOauth::Server
+run Halftime::Server

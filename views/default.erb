@@ -1,13 +1,33 @@
 <Doctype <html>
 <head>
-  <title></title>
+  <meta charset="utf-8">
+  <title>Halftime Report</title>
 </head>
 <body>
   <header>
-    <%=yield%>
+    <div class="logo">
+      <button><a href="/home">Home</a></button>
+    </div>
 
+    <div class="logoff">
+      <button><a href="/logout">Logoff</a></button>
+    </div>
+
+
+
+
+
+  <div class="categories">
+    <ul>
+      <li><a href="/NCAAB">NCAAB</a></li>
+      <li><a href="/NFL">NFL</a></li>
+      <li><a href="/NHL">NHL</a></li>
+      <li><a href="/MMA">MMA</a></li>
+    </ul>
+  </div>
   </header>
 
+    <%=yield%>
 </body>
 </html>
 
