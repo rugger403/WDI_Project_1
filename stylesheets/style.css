@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'Abel';
+  src: url("../fonts/abel.woff") format('woff');
+}
+
+/*html, body {
+  font-family: Abel;
+  color: black;
+  background-color: #FF0000;
+}*/
+
+html, body {
+  background-color: #FF0000;
+
+}
+
+
+header {
+  color: #DBDBDB;
+}
+
+.home{
+  position: relative;
+  width:65%;
+  z-index: 0;
+  margin: 0 auto;
+  top: 335px;
+}
+
+.categories{
+  position:relative;
+  display: inline-block;
+
+
+
+}
+
+
+    .top{
+      left:400px;
+      margin:0 auto;
+      position:relative;
+      display: inline-block;
+      top:250px;
+      }

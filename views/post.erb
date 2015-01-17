@@ -1,19 +1,22 @@
-<form method="POST" action="/<%= @league_name %>">
-  <label>Post
-    <textarea placeholder="Type your post here." name="post"></textarea>
-  </label>
-  <label>Tags
-    <input type="text" placeholder="Type tags here." name="tags"/>
-  </label>
-  <label>Photo
-    <input type="text" placeholder="Image URL here." name="image_url"/>
-  </label>
-  <button type="submit" value="submit">Submit</button>
-</form>
 
-<form method="POST" action="<%= @post %>">
-  <label>Post
+  <div class="form">
+    <form method="POST" action="/<%= @league_name %>">
+      <label>Post<br />
+        <textarea placeholder="Type your post here." name="post"></textarea>
+      </label><br />
+      <label>Tags<br />
+        <input type="text" placeholder="Type tags here." name="tags"/>
+      </label><br /><br />
+      <!-- <label>Photo
+        <input type="text" placeholder="Image URL here." name="image_url"/>
+      </label> -->
+      <button type="submit" value="submit">Submit</button>
+    </form>
+  </div>
+<!-- <form method="POST" action="<%= @post %>">
+  <label>Reply
     <textarea placeholder="Type your post here." name="post"></textarea>
   </label>
   <button type="submit" value="submit">Reply</button>
 </form>
+ -->

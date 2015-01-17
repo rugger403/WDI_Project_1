@@ -1,8 +1,9 @@
 <h1><%= @league_name %></h1>
 <%= erb :post %>
 
-<% @posts.each do |post|%>
-  <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
+<div class="post">
+  <% @posts.each do |post|%>
+    <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
   <%end%>
-
+</div>
 

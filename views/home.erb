@@ -9,45 +9,41 @@
 
 <div class="ncaab">
 <h1>NCAAB</h1>
-
-<ul>
-<li><% @ncaab.each do |post|%>
-  <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
-  <%end%></li>
-</ul>
-</div>
-
-
-
-<div class="nfl">
-<h1>NFL</h1>
-
-<ul>
-  <li><% @nfl.each do |post|%>
-    <p><%= post["post"]%> <%= post["tags"]%>
-      <%= post["time"]%>
-    </p>
+  <ul>
+    <li><% @ncaab.each do |post|%>
+      <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
     <%end%></li>
 </ul>
 </div>
 
 
 
+<div class="nfl">
+  <h1>NFL</h1>
+  <ul>
+    <li><% @nfl.each do |post|%>
+      <p><%= post["post"]%> <%= post["tags"]%><%= post["time"]%></p>
+    <%end%></li>
+  </ul>
+</div>
+
+
+
 <div class="nhl">
-<h1>NHL</h1>
-<ul>
-<li><% @nhl.each do |post|%>
-  <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
-  <%end%></li>
-</ul>
+  <h1>NHL</h1>
+  <ul>
+    <li><% @nhl.each do |post|%>
+      <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
+    <%end%></li>
+  </ul>
 </div>
 
 
 <div class="mma">
 <h1>MMA</h1>
-<ul>
-<li><% @mma.each do |post|%>
-  <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
-  <%end%></li>
-</ul>
+  <ul>
+    <li><% @mma.each do |post|%>
+      <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
+    <%end%></li>
+  </ul>
 </div>

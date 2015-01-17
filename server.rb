@@ -64,29 +64,28 @@ module Halftime
     end
 
 
-    # get '/NCAAB/:id' do
-    #   @post = post(params[:id])
-    #   render(:erb, :show, :layout => :default)
-    # end
+    get '/NCAAB/:id' do
+      @post = post(params[:id])
+      render(:erb, :show, :layout => :default)
+    end
 
     post '/NCAAB' do
       id = $redis.incr("ncaab_id")
       post = params["post"]
       tags = params["tags"]
       photo = params["image_url"]
-      time = Time.now.strftime("%I:%M %p")
+      time = Time.now
       $redis.hmset("ncaab:#{id}", "post", post, "tags",
         tags, "time", time, "photo", photo)
       $redis.lpush("ncaab", id)
-      redirect to('/NCAAB')
+      redirect to('/NCAAB/:id')
     end
 
     # # delete '/NCAAB' do
     # #   name = params["ncaab:#{id}"]
     # #   $redis.del("ncaab:#{id}")
     # #   redirect('/NCAAB')
-
-    # end
+      # end
 
 
 
@@ -103,7 +102,7 @@ module Halftime
        id = $redis.incr("nfl_id")
        post = params["post"]
        tags = params["tags"]
-       time = Time.now.strftime("%I:%M %p")
+       time = Time.now
        $redis.hmset("nfl:#{id}", "post", post, "tags", tags, "time", time)
        $redis.lpush("nfl", id)
        redirect to('/NFL')
@@ -122,12 +121,11 @@ module Halftime
       id = $redis.incr("nhl_id")
       post = params["post"]
       tags = params["tags"]
-      time = Time.now.strftime("%I:%M %p")
+      time = Time.now
       $redis.hmset("nhl:#{id}", "post", post, "tags", tags, "time", time)
       $redis.lpush("nhl", id)
       redirect to('/NHL')
     end
-
 
     get '/MMA' do
       @league_name = "MMA"
@@ -142,12 +140,11 @@ module Halftime
       id = $redis.incr("mma_id")
       post = params["post"]
       tags = params["tags"]
-      time = Time.now.strftime("%I:%M %p")
+      time = Time.now
       $redis.hmset("mma:#{id}", "post", post, "tags", tags, "time", time)
       $redis.lpush("mma", id)
       redirect to('/MMA')
     end
-
 
     get("/oauth_callback") do
       response = HTTParty.post(
@@ -187,11 +184,9 @@ module Halftime
         }
       )
       session[:email]      = response["email"]
-      session["user-id"]   = response["name"]
+      session[:user_id]   = response["name"]
       session[:user_image]= response["avatar_url"]
       session[:provider]   = "Facebook"
-      puts"Hey #{session[:name]}"
     end
-
   end
 end
