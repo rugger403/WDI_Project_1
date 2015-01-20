@@ -16,6 +16,10 @@ html, body {
 
 }
 
+ul{
+  list-style-type: none;
+
+}
 
 header {
   color: #DBDBDB;
@@ -30,11 +34,9 @@ header {
 }
 
 .categories{
+  left:500px;
   position:relative;
   display: inline-block;
-
-
-
 }
 
 

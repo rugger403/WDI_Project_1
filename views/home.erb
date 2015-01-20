@@ -7,12 +7,19 @@
 
  -->
 
+
+
+
 <div class="ncaab">
 <h1>NCAAB</h1>
   <ul>
-    <li><% @ncaab.each do |post|%>
-      <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
-    <%end%></li>
+    <li><% @ncaab_posts.each do |post|%>
+      <p>
+        <%= post["post"]%>
+        <%= post["tags"]%>
+        <%= post["time"]%>
+      </p>
+    <%end%> </li>
 </ul>
 </div>
 
@@ -21,8 +28,13 @@
 <div class="nfl">
   <h1>NFL</h1>
   <ul>
-    <li><% @nfl.each do |post|%>
-      <p><%= post["post"]%> <%= post["tags"]%><%= post["time"]%></p>
+    <li><% @nfl_posts.each do |post|%>
+      <p>
+        <%= post["post"]%>
+        <%= post["tags"]%>
+        <%= post["time"]%></p>
+      <!-- <button><%=@like%>Like</button>
+      <button><%=@dislike%>Dislike</button> -->
     <%end%></li>
   </ul>
 </div>
@@ -32,8 +44,14 @@
 <div class="nhl">
   <h1>NHL</h1>
   <ul>
-    <li><% @nhl.each do |post|%>
-      <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
+    <li><% @nhl_posts.each do |post|%>
+      <p>
+        <%= post["post"]%>
+        <%= post["tags"]%>
+        <%= post["time"]%>
+      </p>
+      <!-- <button>Like</button><%=@like%>
+      <button>Dislike</button><%=@dislike%> -->
     <%end%></li>
   </ul>
 </div>
@@ -42,8 +60,14 @@
 <div class="mma">
 <h1>MMA</h1>
   <ul>
-    <li><% @mma.each do |post|%>
-      <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
+    <li><% @mma_posts.each do |post|%>
+      <p>
+        <%= post["post"]%>
+        <%= post["tags"]%>
+        <%= post["time"]%>
+      </p>
+      <!-- <button><%=@like%>Like</button>
+      <button><%=@dislike%>Dislike</button> -->
     <%end%></li>
   </ul>
 </div>

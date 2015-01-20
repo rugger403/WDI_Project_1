@@ -1,9 +1,3 @@
-require 'httparty'
-require 'pry'
-require_relative 'database_helper'
-
-
-
 module Halftime
   class Server < Sinatra::Base
 
@@ -14,7 +8,7 @@ module Halftime
     configure :development do
       register Sinatra::Reloader
       $redis = Redis.new
-
+      require 'pry'
     end
 
     get('/') do
@@ -23,43 +17,42 @@ module Halftime
         :client_id     => ENV["FACEBOOK_OAUTH_ID"],
         :redirect_uri => "http://localhost:9292/oauth_callback"
       })
-        # :scope         => "",    # part of many OAuth requests, but not with Facebook
-
       @facebook_auth_url = "https://www.facebook.com/dialog/oauth?" + query_params
-
-
-       render(:erb, :index)
-
+      render(:erb, :index)
     end
 
+
+    def league_posts(league)
+     post_ids = $redis.lrange(league, 0, -1)
+     post_ids.map do |id|
+        $redis.hgetall("#{league}:#{id}")
+     end
+    end
+
+
     get '/home' do
-      @ncaab =(post_ids = $redis.lrange("ncaab", 0, -1) #reading all the index values for ncaab
-      @posts = post_ids.map do |id|
-        $redis.hgetall("ncaab:#{id}")
-      end)
-      @nfl = (post_ids = $redis.lrange("nfl", 0, -1)
-        @posts = post_ids.map do |id|
-        $redis.hgetall("nfl:#{id}")
-      end)
-      @nhl = (post_ids = $redis.lrange("nhl", 0, -1)
-      @posts = post_ids.map do |id|
-        $redis.hgetall("nhl:#{id}")
-      end)
-      @mma = (post_ids = $redis.lrange("mma", 0, -1)
-      @posts = post_ids.map do |id|
-        $redis.hgetall("mma:#{id}")
-      end)
-      #@name = get_user_info
+      # reading all the index values for each league
+     @ncaab_posts = league_posts("ncaab")
+
+     @nfl_posts = league_posts("nfl")
+
+     @nhl_posts = league_posts("nhl")
+
+     @mma_posts = league_posts("mma")
+
+      # TODO make this work
+      # @name = get_user_info
       render(:erb,:home, layout: :default)
 
     end
 
     get '/NCAAB' do
+      #reading all the index values for ncaab
       @league_name = "NCAAB"
-      post_ids = $redis.lrange("ncaab", 0, -1) #reading all the index values for ncaab
-      @posts = post_ids.map do |id|
-        $redis.hgetall("ncaab:#{id}")
-      end
+      @ncaab_posts = league_posts("ncaab")
+      # Trying to create like buttons
+      @like = $redis.get("likes")
+      @dislike = $redis.get("dislikes")
       render(:erb,:league, layout: :default)
     end
 
@@ -74,11 +67,13 @@ module Halftime
       post = params["post"]
       tags = params["tags"]
       photo = params["image_url"]
-      time = Time.now
+      # $redis.incr("likes")
+      # $redis.incr("dislikes")
+      time = Time.now.strftime("%m/%d/%Y %H:%M")
       $redis.hmset("ncaab:#{id}", "post", post, "tags",
         tags, "time", time, "photo", photo)
       $redis.lpush("ncaab", id)
-      redirect to('/NCAAB/:id')
+      redirect to('/NCAAB')
     end
 
     # # delete '/NCAAB' do
@@ -91,10 +86,7 @@ module Halftime
 
     get '/NFL' do
       @league_name = "NFL"
-      post_ids = $redis.lrange("nfl", 0, -1) #reading all the index values for nfl
-      @posts = post_ids.map do |id|
-        $redis.hgetall("nfl:#{id}")
-      end
+      @nfl_posts = league_posts("nfl")
       render(:erb,:league, layout: :default)
     end
 
@@ -110,10 +102,7 @@ module Halftime
 
     get '/NHL' do
       @league_name = "NHL"
-      post_ids = $redis.lrange("nhl", 0, -1)
-      @posts = post_ids.map do |id|
-        $redis.hgetall("nhl:#{id}")
-      end
+      @nhl_posts = league_posts("nhl")
       render(:erb, :league, layout: :default)
     end
 
@@ -129,10 +118,7 @@ module Halftime
 
     get '/MMA' do
       @league_name = "MMA"
-      post_ids = $redis.lrange("mma", 0, -1)
-      @posts = post_ids.map do |id|
-        $redis.hgetall("mma:#{id}")
-      end
+      @mma_posts = league_posts("mma")
       render(:erb, :league, layout: :default)
     end
 
@@ -187,6 +173,6 @@ module Halftime
       session[:user_id]   = response["name"]
       session[:user_image]= response["avatar_url"]
       session[:provider]   = "Facebook"
-    end
+    end # get_user_info
   end
 end

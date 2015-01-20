@@ -2,8 +2,12 @@
 <%= erb :post %>
 
 <div class="post">
-  <% @posts.each do |post|%>
-    <p><%= post["post"]%> <%= post["tags"]%> <%= post["time"]%></p>
+  <% @ncaab_posts.each do |post|%>
+    <p>
+      <%= post["post"]%>
+      <%= post["tags"]%>
+      <%= post["time"]%>
+    </p>
   <%end%>
 </div>
 

@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'Abel';
+  src: url("../fonts/abel.woff") format('woff');
+}
+
+html, body {
+  background-color: #A9A9A9;
+
+}
+
+li{
+  list-style-type: none;
+
+
+}
+
+header {
+  font-color: #DBDBDB;
+}
+
+.home{
+  position: relative;
+  display: inline-block;
+  width:65%;
+  z-index: 0;
+  margin: 0 auto;
+  top: 44px;
+  left:50px;
+}
+
+.logoff{
+  position: relative;
+  display: inline-block;
+  width:65%;
+  z-index: 0;
+  margin: 0 auto;
+  top: 0px;
+  left:600px;
+
+}
+
+.categories{
+  left:-800px;
+  position:relative;
+  display: inline-block;
+}
+
+
+    .top{
+      left:400px;
+      margin:0 auto;
+      position:relative;
+      display: inline-block;
+      top:250px;
+      }
+
+.form{
+  margin: 0 auto;
+  left:500px;
+  position:relative;
+}
+
+.button{
+  -moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+  -webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+  box-shadow: 0px 1px 0px 0px #1c1b18;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #8e9493), color-stop(1, #f50c0c));
+  background:-moz-linear-gradient(top, #8e9493 5%, #f50c0c 100%);
+  background:-webkit-linear-gradient(top, #8e9493 5%, #f50c0c 100%);
+  background:-o-linear-gradient(top, #8e9493 5%, #f50c0c 100%);
+  background:-ms-linear-gradient(top, #8e9493 5%, #f50c0c 100%);
+  background:linear-gradient(to bottom, #8e9493 5%, #f50c0c 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#8e9493', endColorstr='#f50c0c',GradientType=0);
+  background-color:#8e9493;
+  -moz-border-radius:15px;
+  -webkit-border-radius:15px;
+  border-radius:15px;
+  border:2px solid #333029;
+  display:inline-block;
+  cursor:pointer;
+  color:#505739;
+  font-family:arial;
+  font-size:14px;
+  font-weight:bold;
+  padding:12px 16px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #ffffff;
+}
+.button:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f50c0c), color-stop(1, #8e9493));
+  background:-moz-linear-gradient(top, #f50c0c 5%, #8e9493 100%);
+  background:-webkit-linear-gradient(top, #f50c0c 5%, #8e9493 100%);
+  background:-o-linear-gradient(top, #f50c0c 5%, #8e9493 100%);
+  background:-ms-linear-gradient(top, #f50c0c 5%, #8e9493 100%);
+  background:linear-gradient(to bottom, #f50c0c 5%, #8e9493 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f50c0c', endColorstr='#8e9493',GradientType=0);
+  background-color:#f50c0c;
+}
+.button:active {
+  position:relative;
+  top:1px;
+}
+
+.post{
+  margin: 0 auto;
+position: relative;
+left:300px;
+
+
+
+}
+.ncaab{
+margin: 0 auto;
+position: relative;
+left:300px;
+
+}
+.nfl{
+margin: 0 auto;
+position: relative;
+left:300px;
+}
+
+.nhl{
+margin: 0 auto;
+position: relative;
+left:300px;
+}
+
+.mma{
+margin: 0 auto;
+position: relative;
+left:300px;
+
+
+}

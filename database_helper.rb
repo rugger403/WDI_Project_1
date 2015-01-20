@@ -6,9 +6,9 @@ module Halftime
   module DatabaseHelper
     REDIS = Redis.new
 
-    # def flushdb
-    #   REDIS.flushdb #flushes Redis database
-    # end
+    def flushdb
+      REDIS.flushdb #flushes Redis database
+    end
 
     # def set_vote_incrementor(value)
     #   REDIS.set("post_id", 1000)
